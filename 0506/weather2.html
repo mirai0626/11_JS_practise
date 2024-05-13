@@ -5,27 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>天気予報スニペット</title>
+  <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Klee+One&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 
   <!-- table用のスタイルシート -->
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid #000;
-      border-collapse: collapse;
-    }
-
-    .target li {
-      list-style: none;
-    }
-  </style>
 </head>
 
 <body>
+  <h1>愛知県</h1>
+  <h1 class="h1-2">天気 ＆ 降水</h1>
   <!-- <div class="target"></div> -->
   <!-- <div class="threeDays"></div> -->
   <div class="precipitation">
-    <table></table>
+    <div class="threeDays_code">
+      <div class="picture"></div>
+    </div>
+
+    <div class="kousui">
+      <ul class="ulTag">
+        <li>TIME</li>
+      </ul>
+      <ul class="ulTag2">
+        <li>RAINY PERCENT</li>
+      </ul>
+    </div>
   </div>
   <div class="threeDays_code"></div>
   <!-- <div class="seventh">
@@ -44,6 +54,8 @@
 
     //テンプレートリテラルでconst urlに代入します。
     const url = `https://www.jma.go.jp/bosai/forecast/data/overview_forecast/${codeNums[0]["愛知県"]}.json`;
+
+
 
     //fetch()でデータを取得する。
     fetch(url)
@@ -69,6 +81,7 @@
 
     //週間天気
     const weekUrl = `https://www.jma.go.jp/bosai/forecast/data/forecast/${codeNums[0]["愛知県"]}.json`;
+
     fetch(weekUrl)
       .then(function (response) {
         if (response.status !== 200) {
@@ -84,7 +97,7 @@
 
           //地域<h1>西部</h1>を挿入する。
           const result = document.querySelector(".threeDays");
-          result.innerHTML = `<h1>${west.area.name}</h1>`;
+          // result.innerHTML = `<h1>${west.area.name}</h1>`;
 
           //ulをresultに挿入
           const ulElm = document.createElement("ul");
@@ -108,6 +121,10 @@
 
 
     //降水確率
+    const ul = document.querySelector(".ulTag");
+    const ul2 = document.querySelector(".ulTag2");
+
+
     fetch(weekUrl)
       .then(function (response) {
         if (response.status !== 200) {
@@ -121,13 +138,13 @@
           const head1 = document.createElement("h1");
           const p1 = document.createElement("p");
 
-          head1.innerHTML = `${data[0].timeSeries[1].areas[1].area.name}降水率`;
+          // head1.innerHTML = `${data[0].timeSeries[1].areas[1].area.name}降水率`;
           precipAria.insertAdjacentElement("beforebegin",head1);
           precipAria.insertAdjacentElement("beforebegin",p1);
 
 
           //tableを取得
-          const precipTable = document.querySelector(".precipitation table");
+          const precipTable = document.querySelector(".precipitation");
 
           //jsonから時間を取得する
           const timeStamp = data[0].timeSeries[1].timeDefines;
@@ -138,31 +155,33 @@
           console.log(pops);
 
           //時間の行を作成
-          const trElem1 = document.createElement("tr");
+          const li = document.createElement("li");
 
           //今回はfor..of文でループします。
           for (const time of timeStamp) {
             const data = new Date(time);
-            const thElm = document.createElement("th");
+            const li = document.createElement("li");
             //時間を分を2桁にする方法
-            thElm.innerHTML = `${data.getHours()}時${data.getMinutes().toString().padStart(2,"0")}分`;
-            trElem1.appendChild(thElm);
-            precipTable.appendChild(trElem1);
+            li.innerHTML = `${data.getHours()}:${data.getMinutes().toString().padStart(2,"0")}`;
+            ul.appendChild(li);
+            ul.appendChild(li);
           }
 
           //降水確率の行を作成
-          const trElem2 = document.createElement("tr");
+          const li2 = document.createElement("li");
 
           for (const percent of pops) {
-            const thElm = document.createElement("th");
-            thElm.innerHTML = `${percent}%`;
+            const li2 = document.createElement("li");
+            li2.innerHTML = `${percent}%`;
 
             if (percent <= 20) {
               console.log("傘は要らないよ！")
-              thElm.style.color = "red";
+              li2.style.color = "red";
+              li2.insertAdjacentText("beforeend","　　⚠傘が必要だよ⚠")
             }
-            trElem2.appendChild(thElm);
-            precipTable.appendChild(trElem2);
+            ul2.appendChild(li2);
+
+            ul2.appendChild(li2);
           }
         });
       })
@@ -173,6 +192,7 @@
 
 
     //コードを使った取得
+    const picture = document.querySelector(".picture");
     fetch(weekUrl)
       .then(function (response) {
         if (response.status !== 200) {
@@ -187,11 +207,30 @@
             //画像に気象庁のアイコンを読み込み、表示させる。
             const image = document.createElement("img");
 
+            //天気コードを取得
+            console.log(code[i]);
+            //コードの100の位を取得
+            let hundredsPlace = code[i].charAt(0);
+            //各コードの最初の数字で判定
+            if (hundredsPlace === "1") {
+              console.log("晴れ");
+              picture.innerHTML = `<img src="./images/rain.png">`;
+            } else if (hundredsPlace === "2") {
+              console.log("曇り");
+              picture.innerHTML = `<img src="./images/rain.png">`;
+            } else if (hundredsPlace === "3") {
+              console.log("雨");
+              picture.innerHTML = `<img src="./images/rain.png">`;
+            } else {
+              console.log("その他");
+              picture.innerHTML = `<img src="./images/rain.png">`;
+            }
+
             //天気コード内のconst weathercodes内のコードを活用
-            console.log(weathercode[code[i]][0]);
-            const weathericon = weathercode[code[i]][0];
-            image.src = `https://www.jma.go.jp/bosai/forecast/img/${weathericon}`;
-            result.appendChild(image);
+            // console.log(weathercode[code[i]][0]);
+            // const weathericon = weathercode[code[i]][0];
+            // image.src = `https://www.jma.go.jp/bosai/forecast/img/${weathericon}`;
+            // result.appendChild(image);
           }
         });
       })
