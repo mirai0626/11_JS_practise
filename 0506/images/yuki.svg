@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72.72 89.52">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #231815;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        fill: #231815;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M45.11,44.88c4.19-3.22,6.91-8.27,6.91-13.96,0-9.73-7.88-17.61-17.61-17.61s-17.61,7.88-17.61,17.61c0,5.69,2.71,10.74,6.91,13.96-7.12,3.82-11.96,11.33-11.96,19.98,0,12.52,10.15,22.66,22.66,22.66s22.66-10.15,22.66-22.66c0-8.64-4.84-16.15-11.96-19.98Z"/>
+  <circle class="cls-3" cx="29.87" cy="31.04" r=".34"/>
+  <circle class="cls-1" cx="1.69" cy="45.65" r="1.19"/>
+  <circle class="cls-1" cx="58.15" cy="19.53" r="1.19"/>
+  <circle class="cls-1" cx="15.92" cy="1.69" r="1.19"/>
+  <circle class="cls-1" cx="59.33" cy="35.6" r="1.19"/>
+  <circle class="cls-1" cx="71.03" cy="28.37" r="1.19"/>
+  <circle class="cls-1" cx="52.28" cy="6.54" r="1.19"/>
+  <circle class="cls-1" cx="4.06" cy="19.53" r="1.19"/>
+  <circle class="cls-1" cx="10.56" cy="32.56" r="1.19"/>
+  <circle class="cls-3" cx="38.36" cy="31.04" r=".34"/>
+</svg>

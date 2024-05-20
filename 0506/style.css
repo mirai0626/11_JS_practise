@@ -4,7 +4,7 @@ body {
   width: 1000px;
   margin: 100px auto 0;
   background-color: #eaeaea;
-  /* background: url(./images/suisai.jpg) center center no-repeat; */
+  /* background: url(./images/sui.jpg) center center no-repeat; */
   background-size: cover;
 }
 
@@ -66,4 +66,10 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 60px;
+}
+
+#showtoday {
+  margin: -25px 20% 100px;
+  font-size: 32px;
+  font-family: 'Klee One', cursive;
 }
