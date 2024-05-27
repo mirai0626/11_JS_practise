@@ -4,7 +4,7 @@ body {
   width: 1000px;
   margin: 100px auto 0;
   background-color: #eaeaea;
-  background: url(./images/umbrella.png) center center no-repeat;
+  background: url(./images/sinbun2.jpg) center center no-repeat;
   background-size: cover;
 }
 
@@ -13,6 +13,7 @@ h1 {
   margin: 0 auto;
   font-family: 'Klee One', cursive;
   text-align: center;
+  color: #fff;
 }
 
 .h1-2 {
@@ -32,16 +33,19 @@ td {
 
 .threeDays_code {
   margin: 50px 105px;
+  color: #fff;
 }
 
 li:nth-child(1) {
   font-size: 24px;
   font-family: 'Work Sans', sans-serif;
+  color: #fff;
 }
 
 ul {
   font-family: 'Work Sans', sans-serif;
   padding-left: 0;
+  color: #666;
 }
 
 li {

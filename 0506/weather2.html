@@ -217,6 +217,7 @@
           //コードの100の位を取得
           let hundredsPlace = code[0];
           console.log(hundredsPlace);
+          let hundredshort = code[0].charAt(0);
           //各コードの最初の数字で判定
           if (hundredsPlace === "210" || hundredsPlace === "210" || hundredsPlace === "220") {
             // console.log("曇りと晴れ");
@@ -226,19 +227,18 @@
             // console.log("雨と曇り");
             picture.innerHTML = `<img src="./images/kumo-ame.svg">`;
           } else if (hundredsPlace === "306") {
-            console.log("大雨");
+            // console.log("大雨");
             picture.innerHTML = `<img src="./images/ame2.svg">`;
-            hundredsPlace = code[0].charAt(0);
-          } else if (hundredsPlace === "1") {
+          } else if (hundredshort === "1") {
             console.log("晴れ");
-            picture.innerHTML = `<img src="./images/hare.svg">`;
-          } else if (hundredsPlace === "3") {
+            picture.innerHTML = `<img src="./imuges/hure.svg">`;
+          } else if (hundredshort === "3") {
             // console.log("雨");
             picture.innerHTML = `<img src="./images/ame.svg">`;
-          } else if (hundredsPlace === "2") {
-            console.log("曇り");
+          } else if (hundredshort === "2") {
+            // console.log("曇り");
             picture.innerHTML = `<img src="./images/kumori.svg">`;
-          } else if (hundredsPlace === "4") {
+          } else if (hundredshort === "4") {
             // console.log("雪");
             picture.innerHTML = `<img src="./images/yuki.svg">`;
           } else {
